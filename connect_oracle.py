@@ -1,5 +1,8 @@
+
+
 import cx_Oracle as cx
 import pandas as pd
+
 
 """
 Some quick start guides:
@@ -9,11 +12,13 @@ Some quick start guides:
 # TODO change path of Oracle Instant Client to yours
 cx.init_oracle_client(lib_dir = "/Users/clint/Desktop/embedded/instantclient_19_8")
 
+
 # TODO change credentials
 # Connect as user "user" with password "mypass" to the "CSC423" service
 # running on lawtech.law.miami.edu
 connection = cx.connect("cljucsc423", "c08868", "lawtech.law.miami.edu/CSC_423")
 cursor = connection.cursor()
+
 
 querystring1 = "SELECT * from Client"
 querystring2 = "SELECT * from Employee"
@@ -25,12 +30,15 @@ querystring7 = "SELECT COUNT(cNum) FROM Requirements"
 querystring8 = "SELECT COUNT(cNum) FROM Requirements WHERE eTime LIKE '5 PM'"
 querystring9 = "SELECT * FROM Requirements WHERE eTime LIKE '5 PM'"
 
+
 # cursor.execute("""
 #     SELECT *
 #     FROM Client
 #     """)
 
+
 cursor.execute(querystring1)
+
 
 # get column names from cursor
 columns = [c[0] for c in cursor.description]
@@ -41,9 +49,11 @@ df = pd.DataFrame(data, columns = columns)
 print(df) # examine
 print(df.columns)
 # print(df['FIRST_NAME']) # example to extract a column
+
 
 cursor.execute(querystring2)
 
+
 # get column names from cursor
 columns = [c[0] for c in cursor.description]
 # fetch data
@@ -53,9 +63,11 @@ df = pd.DataFrame(data, columns = columns)
 print(df) # examine
 print(df.columns)
 # print(df['FIRST_NAME']) # example to extract a column
+
 
 cursor.execute(querystring3)
 
+
 # get column names from cursor
 columns = [c[0] for c in cursor.description]
 # fetch data
@@ -65,9 +77,11 @@ df = pd.DataFrame(data, columns = columns)
 print(df) # examine
 print(df.columns)
 # print(df['FIRST_NAME']) # example to extract a column
+
 
 cursor.execute(querystring4)
 
+
 # get column names from cursor
 columns = [c[0] for c in cursor.description]
 # fetch data
@@ -77,9 +91,25 @@ df = pd.DataFrame(data, columns = columns)
 print(df) # examine
 print(df.columns)
 # print(df['FIRST_NAME']) # example to extract a column
+
+
+cursor.execute(querystring5)
+
+
+# get column names from cursor
+columns = [c[0] for c in cursor.description]
+# fetch data
+data = cursor.fetchall()
+# bring data into a pandas dataframe for easy data transformation
+df = pd.DataFrame(data, columns = columns)
+print(df) # examine
+print(df.columns)
+# print(df['FIRST_NAME']) # example to extract a column
+
 
 cursor.execute(querystring6)
 
+
 # get column names from cursor
 columns = [c[0] for c in cursor.description]
 # fetch data
@@ -89,9 +119,11 @@ df = pd.DataFrame(data, columns = columns)
 print(df) # examine
 print(df.columns)
 # print(df['FIRST_NAME']) # example to extract a column
+
 
 cursor.execute(querystring7)
 
+
 # get column names from cursor
 columns = [c[0] for c in cursor.description]
 # fetch data
@@ -101,9 +133,11 @@ df = pd.DataFrame(data, columns = columns)
 print(df) # examine
 print(df.columns)
 # print(df['FIRST_NAME']) # example to extract a column
+
 
 cursor.execute(querystring8)
 
+
 # get column names from cursor
 columns = [c[0] for c in cursor.description]
 # fetch data
@@ -114,7 +148,9 @@ print(df) # examine
 print(df.columns)
 # print(df['FIRST_NAME']) # example to extract a column
 
+
 cursor.execute(querystring9)
+
 
 # get column names from cursor
 columns = [c[0] for c in cursor.description]
