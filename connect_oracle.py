@@ -16,7 +16,7 @@ cx.init_oracle_client(lib_dir = "/Users/clint/Desktop/embedded/instantclient_19_
 # TODO change credentials
 # Connect as user "user" with password "mypass" to the "CSC423" service
 # running on lawtech.law.miami.edu
-connection = cx.connect("cljucsc423", "c08868", "lawtech.law.miami.edu/CSC_423")
+connection = cx.connect("user", "mypass", "lawtech.law.miami.edu/CSC_423")
 cursor = connection.cursor()
 
 
